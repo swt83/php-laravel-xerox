@@ -36,7 +36,7 @@ class Xerox
         if ($pass)
         {
             // set hash
-            $hash = md5($url);
+            $hash = 'xerox_'.md5($url);
 
             // get cache
             $cache = \Cache::get($hash);
@@ -66,10 +66,10 @@ class Xerox
      */
     public static function after($request, $response)
     {
-        // get hash (meaning, cache this now)
+        // get hash (if available, means cache this page)
         $hash = isset($_SERVER['xerox']) ? $_SERVER['xerox'] : null;
 
-        // if cachable...
+        // if caching...
         if ($hash)
         {
             // if not normal response object...
