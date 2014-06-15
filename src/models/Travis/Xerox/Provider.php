@@ -1,9 +1,11 @@
-<?php namespace Vendor\Package;
+<?php
+
+namespace Travis\Xerox;
 
 use Illuminate\Support\ServiceProvider;
 
-class PackageServiceProvider extends ServiceProvider {
-
+class Provider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -18,9 +20,11 @@ class PackageServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('vendor/package');
+        // set root
+        $src = __DIR__.'/../../../';
 
-        include __DIR__.'/../../routes.php';
+        // register package
+        $this->package('travis/xerox', null, $src);
     }
 
     /**
@@ -42,5 +46,4 @@ class PackageServiceProvider extends ServiceProvider {
     {
         return array();
     }
-
 }

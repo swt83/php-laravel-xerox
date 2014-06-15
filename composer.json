@@ -1,7 +1,7 @@
 {
-    "name": "vendor/package",
-    "description": "",
-    "homepage": "",
+    "name": "travis/xerox",
+    "description": "A Laravel PHP package for automatic page caching. ",
+    "homepage": "https://github.com/swt83/php-laravel-xerox",
     "license": "MIT",
     "authors": [
         {
@@ -9,22 +9,13 @@
             "email": "scott.w.travis@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": ""
-        }
-    ],
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "4.1.*"
+        "illuminate/support": "4.2.*"
     },
     "autoload": {
-        "classmap": [
-            "src/commands"
-        ],
         "psr-0": {
-            "Vendor\\": "src/"
+            "Travis\\": "src/models/"
         }
     },
     "minimum-stability": "dev"
