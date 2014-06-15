@@ -52,7 +52,7 @@ class Xerox
             else
             {
                 // set flag to cache
-                $_SERVER['flatten'] = $hash;
+                $_SERVER['xerox'] = $hash;
             }
         }
     }
@@ -67,7 +67,7 @@ class Xerox
     public static function after($request, $response)
     {
         // get hash (meaning, cache this now)
-        $hash = isset($_SERVER['flatten']) ? $_SERVER['flatten'] : null;
+        $hash = isset($_SERVER['xerox']) ? $_SERVER['xerox'] : null;
 
         // if cachable...
         if ($hash)
