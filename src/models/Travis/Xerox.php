@@ -66,22 +66,27 @@ class Xerox
      */
     public static function after($request, $response)
     {
-        // get status
-        $status = $response->headers->get('Status-Code');
-
-        // if status not 200...
-        if ($status and $status !== 200)
-        {
-            // bail
-            return null;
-        }
-
         // get hash (meaning, cache this now)
         $hash = isset($_SERVER['flatten']) ? $_SERVER['flatten'] : null;
 
         // if cachable...
         if ($hash)
         {
+            // if not normal response object...
+            if (get_class($response) !== 'Illuminate\Http\Response')
+            {
+                // bail
+                return null;
+            }
+
+            // if status code not 200...
+            $status = $response->headers->get('Status-Code');
+            if ($status and $status !== 200)
+            {
+                // bail
+                return null;
+            }
+
             // get html
             $html = $response->getOriginalContent()->render();
 
