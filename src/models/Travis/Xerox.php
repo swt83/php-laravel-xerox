@@ -47,6 +47,7 @@ class Xerox
             // if found...
             if ($cache)
             {
+                // "skip to the end!"
                 return $cache;
             }
 
@@ -78,14 +79,17 @@ class Xerox
             return null;
         }
 
-        // get hash (meaning, cache this view)
+        // get hash (meaning, cache this now)
         $hash = isset($_SERVER['flatten']) ? $_SERVER['flatten'] : null;
 
         // if cachable...
         if ($hash)
         {
+            // get html
+            $html = $response->getOriginalContent()->render();
+
             // cache
-            \Cache::put($hash, $response->getOriginalContent()->render(), 5);
+            \Cache::put($hash, $html, 5);
         }
     }
 }
