@@ -30,7 +30,10 @@ App::after(function($request, $response)
 });
 ```
 
-- You can ignore certain URIs from being cached via the config file.
+Things to consider:
+
+- You can set the cache time via the config file.
+- You can ignore certain URIs via the config file.
 - Only ``GET`` requests with a response code of ``200`` are cached.
 
 You should be good to go.
