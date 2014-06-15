@@ -1,6 +1,6 @@
 # Xerox
 
-A Laravel PHP package for automatic page caching.  Attaches to your ``before`` and ``after`` filters, so its easy.
+A Laravel PHP package for automatic page caching.  Attaches to your ``before`` and ``after`` filters, so it's easy.
 
 ### Provider
 
