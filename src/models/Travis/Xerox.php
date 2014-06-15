@@ -19,15 +19,12 @@ class Xerox
             return null;
         }
 
-        // set uncachable uris (regex)
-        $uncachable = \Config::get('xerox::uncachable', array());
-
         // get url
         $url = \URL::full();
 
-        // determine cachable...
+        // determine if cachable, consult config...
         $pass = true;
-        foreach ($uncachable as $u)
+        foreach (\Config::get('xerox::ignore', array()) as $u)
         {
             if (preg_match('/'.$u.'/i', $url))
             {
@@ -89,7 +86,7 @@ class Xerox
             $html = $response->getOriginalContent()->render();
 
             // cache
-            \Cache::put($hash, $html, 5);
+            \Cache::put($hash, $html, \Config::get('xerox::cooldown', 5));
         }
     }
 }
