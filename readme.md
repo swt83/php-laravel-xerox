@@ -1,33 +1,30 @@
 # Xerox
 
-A Laravel PHP package for automatic page caching.  Attaches to your ``before`` and ``after`` filters, so it's easy.
+A Laravel PHP package for automatic page caching.
 
-### Provider
+- Updated for Laravel 5 on May 23, 2015.
 
-Register the service provider in your ``app/config/app.php`` file:
+## Config
+
+You can use either the ``.env`` or config file method of settings variables.
+
+When using the ``.env`` method:
 
 ```php
-'Travis\Xerox\Provider'
+XEROX_COOLDOWN = 5,
+XEROX_IGNORE = [
+	'test',
+],
 ```
-
-### Config
-
-Copy the config file to ``app/config/packages/travis/xerox/config.php`` and input the necessary information.
 
 ## Usage
 
-Modify your ``before`` and ``after`` filters:
+Add the middleware to your ``bootstrap/app.php`` file:
 
 ```php
-App::before(function($request)
-{
-    return Travis\Xerox::before($request);
-});
-
-App::after(function($request, $response)
-{
-    return Travis\Xerox::after($request, $response);
-});
+$app->middleware([
+	'Travis\\Xerox\\Middleware',
+]);
 ```
 
 Things to consider:

@@ -2,8 +2,8 @@
 
 namespace Travis;
 
-class Xerox
-{
+class Xerox {
+
     /**
      * Return a cached copy of the page.
      *
@@ -94,4 +94,5 @@ class Xerox
             \Cache::put($hash, $html, \Config::get('xerox::cooldown', 5));
         }
     }
+
 }
