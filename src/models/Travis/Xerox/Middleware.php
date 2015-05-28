@@ -18,15 +18,20 @@ class Middleware {
 		// load from cache
 		$response = Xerox::before($request);
 
-		// if not found...
-		if (!$response)
+		// if found...
+		if ($response)
 		{
-			// build
-	    	$resonse = $next($request);
+			// This cached value is HTML only, not a formal
+			// response object. So we need to fix it up.
 
-	    	// save to cache
-		    Xerox::after($request, $response);
+			$response = new \Response($response);
 		}
+
+		// build
+    	$response = $next($request);
+
+    	// save to cache
+	    Xerox::after($request, $response);
 
 		// return
 		return $response;

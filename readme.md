@@ -2,34 +2,37 @@
 
 A Laravel PHP package for automatic page caching.
 
-- Updated for Laravel 5 on May 23, 2015.
+- May 27, 2015: New v1.1.0 for use with Laravel 5.
+
+## Install
+
+Open ``app/Http/Kernal.php`` and register the middleware:
+
+```php
+'Travis\Xerox\Middleware',
+```
+
+Open ``config/app.php`` and register the provider:
+
+```php
+'Travis\Xerox\Provider',
+```
 
 ## Config
 
-You can use either the ``.env`` or config file method of settings variables.
+This package is designed to use config files:
 
-When using the ``.env`` method:
-
-```php
-XEROX_COOLDOWN = 5,
-XEROX_IGNORE = [
-	'test',
-],
+```bash
+$ php artisan vender:publish
 ```
+
+Then edit ``config/xerox.php`` as needed.
 
 ## Usage
 
-Add the middleware to your ``bootstrap/app.php`` file:
+After installation, pages are being cached automatically.  Things to remember:
 
-```php
-$app->middleware([
-	'Travis\\Xerox\\Middleware',
-]);
-```
-
-Things to consider:
-
-- You can set the cache time via the config file.
+- You can set the cache cooldown via the config file.
 - You can ignore certain URIs via the config file.
 - Only ``GET`` requests with a response code of ``200`` are cached.
 
