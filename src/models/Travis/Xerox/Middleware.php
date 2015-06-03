@@ -24,7 +24,10 @@ class Middleware {
 			// This cached value is HTML only, not a formal
 			// response object. So we need to fix it up.
 
-			$response = new \Response($response);
+			$response = response($response); // looks like facades dont work in middleware?
+
+			// return
+			return $response;
 		}
 
 		// build

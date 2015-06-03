@@ -12,6 +12,13 @@ class Xerox {
      */
     public static function before($request)
     {
+        // if not activated...
+        if (!\Config::get('xerox.is_active'))
+        {
+            // bail
+            return null;
+        }
+
         // if NOT get method...
         if (!$request->isMethod('get'))
         {
@@ -71,7 +78,7 @@ class Xerox {
         $html = $response->getOriginalContent()->render();
 
         // get cooldown
-        $cooldown =\Config::get('xerox.cooldown', 5);
+        $cooldown = \Config::get('xerox.cooldown', 5);
 
         // cache
         \Cache::put(static::hash(), $html, $cooldown);
