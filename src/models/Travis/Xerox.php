@@ -75,7 +75,17 @@ class Xerox {
         */
 
         // get html
-        $html = $response->getOriginalContent()->render();
+        $html = $response->getOriginalContent();
+
+        // if response object...
+        if (is_object($html))
+        {
+            // render
+            $html = $html->render();
+
+            // Presumtively, if $html is not an object, it is already
+            // a string that can be returned directly.
+        }
 
         // get cooldown
         $cooldown = \Config::get('xerox.cooldown', 5);
