@@ -1,7 +1,6 @@
 {
     "name": "travis/xerox",
     "description": "A Laravel PHP package for automatic page caching.",
-    "homepage": "https://bitbucket.org/swt83/php-laravel-xerox",
     "license": "MIT",
     "authors": [
         {
